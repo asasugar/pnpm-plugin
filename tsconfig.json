@@ -2,18 +2,18 @@
   "compilerOptions": {
     "strict": true,
     "target": "esnext",
-    "module": "esnext",
+    "module": "commonjs",
     "lib": ["esnext", "DOM"],
     "moduleResolution": "node",
     "esModuleInterop": true,
     "strictNullChecks": true,
-    "resolveJsonModule": true,
+    "resolveJsonModule": true
   },
   "include": [
     "src/**/*"
   ],
   "exclude": [
-      "node_modules",
-      "**/*.spec.ts"
+    "node_modules",
+    "**/*.spec.ts"
   ]
 }
