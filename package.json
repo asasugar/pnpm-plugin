@@ -1,5 +1,5 @@
 {
-  "name": "pkg-cli",
+  "name": "fast-pkg-cli",
   "version": "1.0.0",
   "description": "基于TypeScript开发npm插件的cli工具。",
   "main": "dist/index.js",
@@ -9,7 +9,7 @@
     "dist"
   ],
   "bin": {
-    "pkg-cli": "dist/index.js"
+    "fast-pkg-cli": "dist/index.js"
   },
   "scripts": {
     "dev": "pnpm build -- --watch",
@@ -25,18 +25,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/asasugar/pkg-cli.git"
+    "url": "git+https://github.com/asasugar/fast-pkg-cli.git"
   },
   "keywords": [
     "cli",
-    "pkg-cli"
+    "fast-pkg-cli"
   ],
   "author": "asasugar <xxj95719@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/asasugar/pkg-cli/issues"
+    "url": "https://github.com/asasugar/fast-pkg-cli/issues"
   },
-  "homepage": "https://github.com/asasugar/pkg-cli#readme",
+  "homepage": "https://github.com/asasugar/fast-pkg-cli#readme",
   "packageManager": "pnpm@6.30.0",
   "engines": {
     "node": ">=12.0.0"
