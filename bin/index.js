@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/env node --experimental-modules
 import fs from 'fs';
 import { Command } from 'commander'; //可以解析用户输入的命令
 import download from 'obtain-git-repo';

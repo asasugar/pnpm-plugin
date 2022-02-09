@@ -6,7 +6,8 @@
   "bin": {
     "fast-pkg-cli": "./bin/index.js"
   },
-  "type": "commonjs",
+  "type": "module",
+  "perferGlobal": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
