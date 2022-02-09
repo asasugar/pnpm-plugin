@@ -1,12 +1,11 @@
 #!/usr/bin/env node
-
 import fs from 'fs';
 import { Command } from 'commander'; //可以解析用户输入的命令
 import download from 'obtain-git-repo';
 import chalk from 'chalk'; //改变输出文字的颜色
 import inquirer from 'inquirer';
 import ora from 'ora'; //小图标（loading、succeed、warn等）
-download('', '', {}, () => {});
+download('', '', {}, () => { });
 import packageJSON from '../package.json';
 const program = new Command();
 
@@ -55,7 +54,7 @@ program
     }
 
     const spinner = ora('正在从github下载...').start();
-    download(downloadUrl, name, {}, function (err: any) {
+    download(downloadUrl, name, {}, function (err) {
       if (!err) {
         spinner.clear();
         console.info('');
