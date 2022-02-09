@@ -5,6 +5,7 @@
   "main": "./bin/index.js",
   "type": "module",
   "scripts": {
+    "preinstall": "npx only-allow pnpm",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
@@ -28,6 +29,7 @@
   "homepage": "https://github.com/asasugar/pnpm-plugin#readme",
   "packageManager": "pnpm@6.30.0",
   "engines": {
-    "node": ">=12.0.0"
+    "node": ">=12.0.0",
+    "pnpm": ">=6"
   }
 }
