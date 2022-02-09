@@ -1,12 +1,13 @@
-# fast-pkg-cli
+# pnpm-plugin
 
-基于TypeScript开发npm插件的cli工具。
+基于pnpm(快速的，节省磁盘空间的包管理工具)插件开发模版
 
-     # 全局安装cli
-     $ pnpm i fast-pkg-cli -g
-     # 查看版本
-     $ fast-pkg-cli -V
-     # 创建项目
-     $ fast-pkg-cli init
+## Run
+
+     $ pnpm i 
 
 
+     $ pnpm dev 
+     
+     
+     $ pnpm build
