@@ -1,17 +1,17 @@
 {
   "name": "fast-pkg-cli",
-  "version": "1.0.1",
-  "description": "基于TypeScript开发npm插件的cli工具。",
-  "main": "dist/index.js",
+  "version": "1.0.2",
+  "description": "开发npm插件的cli工具。",
+  "main": "bin/index.mjs",
   "files": [
-    "dist"
+    "bin"
   ],
   "bin": {
-    "fast-pkg-cli": "dist/index.js"
+    "fast-pkg-cli": "bin/index.mjs"
   },
   "scripts": {
     "dev": "pnpm build -- --watch",
-    "build": "tsup src/index.ts --dts --format cjs",
+    "build": "tsup src/index.ts --dts --format esm",
     "prepublishOnly": "pnpm build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
