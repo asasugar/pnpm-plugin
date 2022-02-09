@@ -1,11 +1,12 @@
 {
   "name": "fast-pkg-cli",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "开发npm插件的cli工具。",
   "main": "./bin/index.ts",
   "bin": {
     "fast-pkg-cli": "./bin/index.ts"
   },
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
