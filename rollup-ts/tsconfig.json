@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+		"strict": true,
+		"target": "esnext",
+		"module": "esnext",
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		"declaration": true,
+		"declarationDir": "./dist/types",
+		"declarationMap": true,
+		"outDir": "./dist",
+		"sourceMap": true,
+		"skipLibCheck": true,
+		"isolatedModules": true,
+		"moduleResolution": "node",
+		"resolveJsonModule": true, 
+		"lib": ["esnext", "dom"], 
+		"types": ["node"]
+  },
+  "include": [
+	  "src/*"
+  ]
+}

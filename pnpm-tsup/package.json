@@ -13,6 +13,7 @@
     "dist"
   ],
   "scripts": {
+    "preinstall": "npx only-allow pnpm",
     "dev": "pnpm build -- --watch",
     "build": "tsup src/index.ts --dts --format cjs,esm",
     "lint": "eslint \"{src,test}/**/*.ts\"",
