@@ -11,6 +11,12 @@ import { IAnswers, IQuestion } from './types';
   try {
     const question: IQuestion[] = [
       {
+        type: 'list',
+        message: `Please choose plugin template type:`,
+        name: 'type',
+        choices: ['pnpm-tsup', 'rollup-ts'],
+      },
+      {
         type: 'input',
         message: `Please set plugin name: `,
         name: 'name',
@@ -35,13 +41,14 @@ import { IAnswers, IQuestion } from './types';
         default: '0.0.1',
       },
     ];
-    const copyRoot: string = './plugin-temp';
+
     const outRoot: string = './packages';
 
-    function renderPlugin(dir: string, outDir: string, answers: IAnswers) {
+    function renderPlugin(outDir: string, answers: IAnswers) {
       return new Promise((resolve, reject) => {
-        let file = path.join(dir);
-        let outFile = path.join(outDir, answers.name);
+        let dir: string = `./${answers.type}`;
+        let file: string = path.join(dir);
+        let outFile: string = path.join(outDir, answers.name);
 
         if (answers.name) {
           fs.access(outFile, (error: any) => {
@@ -51,7 +58,7 @@ import { IAnswers, IQuestion } from './types';
                   reject(false);
                 } else {
                   resolve(true);
-                  let newFilePath = `${process.cwd()}/${outFile}/package.json`;
+                  let newFilePath: string = `${process.cwd()}/${outFile}/package.json`;
                   // copy plugin-temp
                   await fse.copy(file, outFile);
                   // transfer content
@@ -93,8 +100,8 @@ import { IAnswers, IQuestion } from './types';
         });
       });
     }
-    const answers = await inquirer.prompt(question);
-    await renderPlugin(copyRoot, outRoot, answers);
+    const answers: IAnswers = await inquirer.prompt(question);
+    await renderPlugin(outRoot, answers);
     const spinner = ora('正在从plugin-temp复制...').start();
     spinner.clear();
     console.info('');
