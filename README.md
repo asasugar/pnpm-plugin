@@ -15,4 +15,3 @@
      $ pnpm dev 
      
      
-     $ pnpm build
