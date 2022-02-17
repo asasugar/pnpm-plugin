@@ -59,15 +59,56 @@ import { IAnswers, IQuestion } from './types';
                 } else {
                   resolve(true);
                   let newFilePath: string = `${process.cwd()}/${outFile}/package.json`;
+
+                  // 模版dist/node_modules判断是否存在
+                  const distFile = path.join(dir, 'dist');
+                  const nodeModulesFile = path.join(dir, '..', 'node_modules');
+                  fs.access(distFile, (error: any) => {
+                    // 模版存在dist文件夹，则删除
+                    if (!error) {
+                      fs.rmdirSync(distFile, {
+                        recursive: true,
+                      });
+                    }
+                  });
+                  fs.access(nodeModulesFile, (error: any) => {
+                    // 模版存在node_modules文件夹，则删除
+                    if (!error) {
+                      fs.rmdirSync(nodeModulesFile, {
+                        recursive: true,
+                      });
+                    }
+                  });
                   // copy plugin-temp
                   await fse.copy(file, outFile);
                   // transfer content
                   transferContent(newFilePath, answers);
+
+                  console.info('');
+                  console.info(
+                    chalk.green(
+                      '-----------------------------------------------------'
+                    )
+                  );
+                  console.info('');
+                  spinner.succeed('项目创建成功,请继续进行以下操作:');
+                  console.info('');
+                  console.info(chalk.cyan(` -  cd ${answers.name}`));
+                  console.info(chalk.cyan(` -  pnpm install`));
+                  console.info(chalk.cyan(` -  pnpm dev`));
+                  console.info('');
+                  console.info(
+                    chalk.green(
+                      '-----------------------------------------------------'
+                    )
+                  );
+                  console.info('');
                 }
               });
             } else {
               ora().warn('发生错误，项目已存在');
               reject(false);
+              process.exit();
             }
           });
         }
@@ -84,7 +125,7 @@ import { IAnswers, IQuestion } from './types';
         _data.name = answers.name;
         _data.description = answers.description;
         _data.version = answers.version;
-        _data.keywords = answers.keywords.split('');
+        _data.keywords = answers.keywords.split(',');
         _data.homepage = `${packageJson.homepage}/${answers.name}#readme`;
         _data.bugs = {
           url: `${packageJson.homepage}/issues`,
@@ -101,24 +142,9 @@ import { IAnswers, IQuestion } from './types';
       });
     }
     const answers: IAnswers = await inquirer.prompt(question);
+    const spinner = ora('正在从plugin-temp模版中复制...').start();
     await renderPlugin(outRoot, answers);
-    const spinner = ora('正在从plugin-temp复制...').start();
     spinner.clear();
-    console.info('');
-    console.info(
-      chalk.green('-----------------------------------------------------')
-    );
-    console.info('');
-    spinner.succeed('项目创建成功,请继续进行以下操作:');
-    console.info('');
-    console.info(chalk.cyan(` -  cd ${answers.name}`));
-    console.info(chalk.cyan(` -  pnpm install`));
-    console.info(chalk.cyan(` -  pnpm dev`));
-    console.info('');
-    console.info(
-      chalk.green('-----------------------------------------------------')
-    );
-    console.info('');
   } catch (error) {
     process.exit();
   }
